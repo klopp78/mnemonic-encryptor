@@ -21,38 +21,21 @@
 ### 1. 更新软件包列表
 ```bash
 sudo apt update
+
 2. 安装 Python 和 Pip
-bash
-Copy
-Edit
-sudo apt install python3 python3-pip
+apt install python3 python3-pip
 
 3. 安装 Git（可选，用于克隆）
-bash
-Copy
-Edit
 sudo apt install git
 
 4. 克隆仓库
-bash
-Copy
-Edit
 git clone https://github.com/klopp78/mnemonic-encryptor.git
 cd mnemonic-encryptor
-
-5. （可选）创建虚拟环境
-apt install python3 python3-pip
-python3 -m venv venv
-source venv/bin/activate
-pip install pycryptodome
-
-7. 赋予脚本执行权限
 chmod +x mnemonic_encryptor.py
 
+5. （可选）创建虚拟环境
+python3 -m venv venv
 source venv/bin/activate
 ./mnemonic_encryptor.py
-
-
-Copy
-Edit
+or
 python3 mnemonic_encryptor.py
