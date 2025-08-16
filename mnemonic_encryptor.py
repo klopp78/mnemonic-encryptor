@@ -20,8 +20,9 @@ def unpad_data(data):
 
 def encrypt_mnemonic(mnemonic, special_char):
     """加密助记词"""
-    if len(special_char) != 1:
-        return None, None, "特殊符号必须为单个字符！"
+    # 移除单字符验证，允许任意长度的特殊符号
+    if not special_char:
+        return None, None, "特殊符号不能为空！"
     
     mnemonic_bytes = mnemonic.encode('utf-8')
     base64_encoded = base64.b64encode(mnemonic_bytes).decode('utf-8')
@@ -52,7 +53,7 @@ def decrypt_mnemonic(encrypted_data_base64, key_base64, special_char):
         decrypted_with_special = decrypted_data.decode('utf-8')
 
         if decrypted_with_special.endswith(special_char):
-            base64_encoded = decrypted_with_special[:-1]
+            base64_encoded = decrypted_with_special[:-len(special_char)]
             mnemonic_restored = base64.b64decode(base64_encoded).decode('utf-8')
             return mnemonic_restored, None
         else:
@@ -73,12 +74,14 @@ def main_menu():
         if choice == '1':
             clear_screen()
             print("=== 加密助记词 ===")
-            mnemonic = input("请输入12个助记词（用空格分隔）: ")
-            if len(mnemonic.split()) != 12:
-                print("错误：请输入12个助记词！")
+            mnemonic = input("请输入12到24个助记词（用空格分隔）: ")
+            # 验证助记词数量（12到24个单词）
+            word_count = len(mnemonic.split())
+            if word_count not in [12, 15, 18, 21, 24]:
+                print("错误：助记词必须包含12、15、18、21或24个单词！")
                 input("按回车返回菜单...")
                 continue
-            special_char = input("请输入一个特殊符号（单个字符，建议@或#）：")
+            special_char = input("请输入特殊符号（建议多字符：")
             encrypted_data, key, error = encrypt_mnemonic(mnemonic, special_char)
             if error:
                 print(error)
