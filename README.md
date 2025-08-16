@@ -1,56 +1,58 @@
-README.md Contentmarkdown
+# 助记词加密器 (Mnemonic Encryptor)
 
-# Mnemonic Encryptor
+这是一个 Python 脚本，用于安全地加密和解密 12 个单词的助记词短语（例如加密货币钱包）。  
+它结合了 **Base64 编码**、用户自定义的特殊字符，以及 **AES-256-CBC 加密**。  
+该脚本提供了一个命令行菜单界面，方便操作。
 
-A Python script to securely encrypt and decrypt 12-word mnemonic phrases (e.g., for cryptocurrency wallets) using Base64 encoding, a user-specified special character, and AES-256-CBC encryption. The script provides a command-line menu interface for ease of use.
+## 功能特性
+- 🔐 将 12 个单词的助记词短语加密为带有特殊字符的 Base64 编码密文。
+- 🛡️ 使用 AES-256-CBC 进行安全加密，并随机生成密钥和初始化向量 (IV)。
+- 🔑 使用密钥和特殊字符将密文解密回原始助记词短语。
+- 🖥️ 提供交互式菜单界面，支持加密和解密操作。
 
-## Features
-- Encrypts a 12-word mnemonic phrase into a Base64-encoded ciphertext with a special character.
-- Uses AES-256-CBC for secure encryption with a randomly generated key and initialization vector (IV).
-- Decrypts the ciphertext back to the original mnemonic phrase using the key and special character.
-- Interactive menu interface for encryption and decryption.
+## 先决条件
+- Ubuntu 20.04 或更高版本
+- Python 3.6 或更高版本
+- Git（用于克隆仓库）
+- Python 库 `pycryptodome`
 
-## Prerequisites
-- Ubuntu 20.04 or later
-- Python 3.6 or higher
-- Git (for cloning the repository)
-- `pycryptodome` Python library
+## 安装 (Ubuntu)
 
-## Installation on Ubuntu
-
-1. **Update Package List**:
-   Ensure your system is up-to-date:
-   ```bash
-   sudo apt update
-
-Install Python and Pip:
-Install Python 3 and pip if not already installed:bash
-
+### 1. 更新软件包列表
+```bash
+sudo apt update
+2. 安装 Python 和 Pip
+bash
+Copy
+Edit
 sudo apt install python3 python3-pip
 
-Install Git (optional, for cloning the repository):bash
-
+3. 安装 Git（可选，用于克隆）
+bash
+Copy
+Edit
 sudo apt install git
 
-Clone the Repository (if using Git):bash
-
-git clone https://github.com/your-username/mnemonic-encryptor.git
+4. 克隆仓库
+bash
+Copy
+Edit
+git clone https://github.com/klopp78/mnemonic-encryptor.git
 cd mnemonic-encryptor
 
-Replace your-username with your GitHub username.Alternatively, download the mnemonic_encryptor.py file directly from the GitHub repository.
-Set Up a Virtual Environment (recommended):
-Create and activate a virtual environment to manage dependencies:bash
-
+5. （可选）创建虚拟环境
+apt install python3 python3-pip
 python3 -m venv venv
 source venv/bin/activate
-
-Install Dependencies:
-Install the required pycryptodome library:bash
-
 pip install pycryptodome
 
-Make the Script Executable:
-Ensure the script has executable permissions:bash
-
+7. 赋予脚本执行权限
 chmod +x mnemonic_encryptor.py
 
+source venv/bin/activate
+./mnemonic_encryptor.py
+
+
+Copy
+Edit
+python3 mnemonic_encryptor.py
